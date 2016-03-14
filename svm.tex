@@ -130,10 +130,42 @@ SW симметрично,\\но не всегда положительно по
 Свёртка двух строковых ядер --- строковое ядро.
 \end{frame}
 
-% \begin{frame}
-% \frametitle{Построение ядра локального выравнивания}
-% \end{frame}
-%
+\begin{frame}
+    \frametitle{Построение ядра локального выравнивания (LA)}
+    Сконструируем новое строковое ядро из трёх простых ядер.
+    \bigskip
+
+    Будем использовать:
+    \begin{equation*}
+        \forall (x, y) \in \chi^2
+    \end{equation*}
+
+    \begin{itemize}
+        \item Края:
+            \begin{equation*}
+                k_0(x, y) = 1
+            \end{equation*}
+
+        \item Выровненные символы:
+            \begin{equation*}
+                k_\alpha^{(\beta)}(x, y) = \left\{ \,
+                    \begin{IEEEeqnarraybox}[][c]{l?s}
+                        \IEEEstrut
+                        0 & если $|x| \ne 1$ или $|y| \ne 1$, \\
+                        exp[\beta S(x, y)] & иначе.
+                        \IEEEstrut
+                    \end{IEEEeqnarraybox}
+                    \right.
+                    \label{eq:example_left_right1}
+                \end{equation*}
+
+        \item Пропуски:
+            \begin{equation*}
+                k_g^{(\beta)}(x, y) = exp[\beta (g(|x|) + g(|y|))]
+            \end{equation*}
+    \end{itemize}
+\end{frame}
+
 % \begin{frame}
 % \frametitle{Ядро локального выравнивания}
 % \end{frame}
