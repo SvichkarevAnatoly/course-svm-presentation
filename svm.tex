@@ -188,9 +188,29 @@ SW симметрично,\\но не всегда положительно по
     \end{equation*}
 \end{frame}
 
-% \begin{frame}
-% \frametitle{Связь LA ядра с SW}
-% \end{frame}
+\begin{frame}
+\frametitle{Связь LA ядра с SW}
+Выражение LA ядра через счёт локального выравнивания:
+\begin{equation*}
+    \forall (x, y) \in \chi^2
+\end{equation*}
+\begin{equation*}
+    k_{LA}^{\beta}(x, y) = \sum_{\pi \in \Pi(x, y)}exp(\beta S_{S, g}(x, y, \pi))
+\end{equation*}
+\bigskip
+
+Счёт SW соотносится с LA ядром следующим выражением:
+\begin{equation*}
+    \lim_{\beta\to\infty} \frac{1}{\beta} \ln k_{LA}^{\beta}(x, y)
+    = SW_{S,g}(x, y)
+\end{equation*}
+
+SW не является допустимым строковым ядром:
+\begin{itemize}
+    \item учитывает только лучшее выравнивание для измерения сходства;
+    \item логарифм не всегда обеспечивает положительную полуопределённость.
+\end{itemize}
+\end{frame}
 
 % \begin{frame}
 % \frametitle{Реализация LA ядра}
