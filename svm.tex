@@ -166,10 +166,28 @@ SW симметрично,\\но не всегда положительно по
     \end{itemize}
 \end{frame}
 
-% \begin{frame}
-% \frametitle{Ядро локального выравнивания}
-% \end{frame}
-%
+\begin{frame}
+    \frametitle{Ядро локального выравнивания (LA)}
+    Соединим всё вместе:
+    \begin{equation*}
+        k_{(n)}^{\beta} = k_0
+            \star (k_\alpha^{(\beta)} \star k_g^{(\beta)})^{(n-1)}
+            \star k_\alpha^{(\beta)} \star k_0
+    \end{equation*}
+
+    Сходство между $x$ и $y$
+    с числом выровненных ровно $n$.
+    \bigskip
+
+    Для $n = 0: k_{(0)}^{\beta} = k_0$.
+    \bigskip
+
+    \textbf{LA ядро:}
+    \begin{equation*}
+        k_{LA}^{\beta} = \sum_{i=0}^{\infty}k_{(i)}^{\beta}
+    \end{equation*}
+\end{frame}
+
 % \begin{frame}
 % \frametitle{Проблема диагонального преобладания}
 % \end{frame}
