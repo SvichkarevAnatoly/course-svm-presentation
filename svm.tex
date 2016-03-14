@@ -100,16 +100,36 @@
         \sum^n_{i, j = 1} \alpha_i \alpha_j k(x_i, x_j) \geq 0
     \end{equation*}
 \end{itemize}
+будем называть такие ядра \textit{\textbf{строковыми}}.
 
-\textbf{Проблема:}
-
+\bigskip
+\textbf{Проблема:}\\
 SW симметрично,\\но не всегда положительно полуопределено.
+
+\bigskip
+Авторы решили разобраться...
 \end{frame}
 
-% \begin{frame}
-% \frametitle{Свёртка ядер}
-% \end{frame}
-%
+\begin{frame}
+\frametitle{Свёртка ядер}
+Определение:
+
+\begin{equation*}
+    \sqsupset k_1, k_2 \mid k_i: \chi \times \chi \to \mathbb{R}.
+\end{equation*}
+Свёрткой $k_1$ и $k_2$
+назовём $k_1 \star k_2$:
+\begin{equation*}
+    k_1 \star k_2(x, y)
+    = \sum_{x_1 x_2 = x, y_1 y_2 = y} k_1(x_1, y_1) k_2(x_2, y_2)
+\end{equation*}
+
+\bigskip
+Теорема:
+
+Свёртка двух строковых ядер --- строковое ядро.
+\end{frame}
+
 % \begin{frame}
 % \frametitle{Построение ядра локального выравнивания}
 % \end{frame}
