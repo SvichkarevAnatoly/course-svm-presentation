@@ -1,0 +1,235 @@
+%!TEX root = svm.tex
+
+\begin{frame}
+\frametitle{Постановка задачи}	
+	\begin{itemize}
+		\item $X = \mathbb{R}^{n}$ - пространство объектов
+		\item $Y = \{-1, +1\}$ - множество ответов
+	\end{itemize}
+
+	Задача обучения по $(x_i, y_i), x_i \in X, y_i \in Y$:
+	\begin{equation*}
+	\min_{w, b, \xi} \,\, \frac{1}{2} w^{T}w +  C \sum_{i = 1}^{l}\xi_{i}
+	\end{equation*}
+	При условии:
+	\begin{equation*}
+	y_{i}(w^{T} \phi(x_i) + b) \ge 1 - \xi{i}
+	\end{equation*}
+	\begin{equation*}
+	\xi{i} \ge 0
+	\end{equation*}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Примеры ядер}
+	\begin{itemize}
+		\item Линейное: 
+		\begin{equation*}
+			K(x,y) = \langle x, y \rangle
+		\end{equation*}
+
+		\item Полиномиальное:
+		\begin{equation*}
+			K(x,y) = (\gamma \langle x, y \rangle + r)^2, \gamma > 0
+		\end{equation*}
+
+		\item Радиальная базисная функция (RBF):
+		\begin{equation*}
+			 K(x,y)= e^{-\gamma\left \| x - y \right \|^{2}}, \gamma > 0
+		\end{equation*}
+
+		\item Сигмоид:
+		\begin{equation*}
+			K(x,y) = \tanh(\gamma \langle x, y \rangle + r)
+		\end{equation*}
+
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Шаги обычного пользователя}
+	\begin{enumerate}
+		\item Преобразование данных к формату SVM пакета
+		\item Произвольный выбор ядер и параметров алгоритма
+		\item Тестирование
+		\item Разочарование
+	\end{enumerate}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Шаги продвинутого пользователя}
+	\begin{enumerate}
+		\item Преобразование данных к формату SVM пакета
+		\item \textbf{Масштабирование}
+		\item \textbf{Рассмотрение радиальной базисной функции в роли ядра $K(x,y)= e^{-\gamma\left \| x - y \right \|^{2}}$}
+		\item \textbf{С помощью кросс-валидации поиск наилучших $C$ и $\gamma$}
+		\item \textbf{Дальнейшее обучение на всём множестве объектов}
+		\item Тестирование
+		\item \textbf{Счастье, радость}
+	\end{enumerate}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Преобразование к числовым параметрам}
+	\begin{figure}[h]
+		\center{\includegraphics[width=\linewidth,height=7cm]{img/colors}}
+	\end{figure}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Масштабирование}
+	\begin{itemize}
+		\item Масштабируем в промежуток $[0, 1]$ или $[-1,+1]$
+		\item Масштабируем как обучающуюся выборку, так и тестируемую выборку
+		\item Решает проблему переполнения
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Выбор радиального базисного ядра}
+	\begin{itemize}
+		\item Линейное и сигмоидное ядро схожи с радиальным базисным ядром
+		\item Меньше количество параметров по сравнению с остальными ядрами
+		\item Меньше проблем с переполнением
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Кросс-валидация}
+
+	\textbf{Кросс-валидация:}
+	\begin{itemize}
+		\item Разбиваем обучающуюся выборку произвольно на $n$ частей
+		\item На $n - 1$ частях обучаемся, на оставшейся тестируем		
+	\end{itemize}
+
+	\textbf{Зачем?}
+	\begin{itemize}
+		\item Можем избежать проблем с переобучением
+		\item Поиск оптимальных параметров $C$ и $\gamma$
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Пример переобучения}
+	\begin{figure}[h]
+		\center{\includegraphics[width=\linewidth,height=7cm]{img/overfitting}}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Сеточный поиск}
+	\textbf{Поиск $C$ и $\gamma$:}
+	\begin{itemize}
+		\item Перебираем $C = 2^{-5}, 2^{-3},...,2^{15}$ и $\gamma = 2^{-15},2^{-13},...,2^{3}$
+		\item Для каждой пары запускаем кросс-валидацию
+		\item Определяем наилучшую пару
+	\end{itemize}
+	\textbf{Преимущества:}
+	\begin{itemize}
+		\item В силу независимости $C$ и $\gamma$ - легко распараллелить, в отличии от альтернативных методов
+		\item Вычислительная сложность ненамного выше при аналогичных оптимизационных методах
+		\item Эвристические методы не надёжны
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{LIBSVM}
+	\textbf{Библиотека для поддержки SVM}
+	\begin{itemize}
+		\item Имеется интерфейс для R, MATLAB, Python, Haskell и т.д.
+		\item Исходники на Java и C++
+		\item Всевозможные настройки SVM
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{LIBSVM}
+	\textbf{Интерфейс для командной строки:}
+	\begin{itemize}
+		\item \textbf{svm-scale} - мастштабирование
+		\item \textbf{svm-train} - обучение
+		\item \textbf{svm-predict} - предсказывание
+	\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+\frametitle{Примеры}
+	\textbf{Обучаемся:}
+	\begin{lstlisting}[language=bash]
+	svm-train -v 5 svmguide2
+	\end{lstlisting}
+	Cross Validation Accuracy = 56.5217\%
+
+	\textbf{Масштабируем:}
+	\begin{lstlisting}[language=bash]
+    svm-scale -l -1 -u 1 svmguide2 > svmguide2.s
+    svm-train -v 5 svmguide2.s
+	\end{lstlisting}
+	Cross Validation Accuracy = 78.5166\%
+
+	\textbf{Поиск оптимальных параметров:}
+	\begin{lstlisting}[language=bash]
+    python grid.py svmguide2.scale
+	\end{lstlisting}
+	Cross Validation Accuracy = 85.1662\%
+\end{frame}
+
+
+
+
+
+\begin{frame}[fragile]
+\frametitle{Пример неправильного использования}
+
+\begin{lstlisting}[language=bash]
+
+svm-scale -l 0 svmguide4 > svmguide4.s
+svm-scale -l 0 svmguide4.t > svmguide4.t.s
+python easy.py svmguide4.s svmguide4.t.s
+\end{lstlisting}
+\textbf{Accuracy} = 69.2308\% (216/312) (classification)
+
+\begin{lstlisting}[language=bash]
+svm-scale -l 0 -s range4 svmguide4 > svmguide4.s
+svm-scale -r range4 svmguide4.t > svmguide4.t.s
+python easy.py svmguide4.s svmguide4.t.s
+\end{lstlisting}
+\textbf{Accuracy} = 89.4231\% (279/312) (classification)
+
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+\frametitle{LIBLINEAR vs LIBSVM}
+	
+	\textbf{LIBSVM:}
+	\begin{lstlisting}[language=bash]
+	time svm-train -c 4 -t 0 -e 0.1 -m 800 -v
+	\end{lstlisting}
+	Cross Validation Accuracy = 96.8136\%
+
+	345.569s
+
+	\textbf{LIBLINEAR}
+	\begin{lstlisting}[language=bash]
+	time train -c 4 -e 0.1 -v 5
+	\end{lstlisting}
+
+	Cross Validation Accuracy = 97.0161\%
+
+	2.944s
+
+\end{frame}

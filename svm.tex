@@ -1,0 +1,50 @@
+\documentclass{beamer}
+\mode<presentation>
+\setbeameroption{show notes}
+
+
+\usepackage{listings} % подгражаем языки
+
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{pdfpages}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{multirow}
+
+\usepackage{amsfonts}
+
+\setbeamertemplate{navigation symbols}{
+	\insertframenavigationsymbol
+	\raisebox{0.07cm}[0pt][0pt]{
+    \insertframenumber/\inserttotalframenumber}
+}
+
+\setbeamertemplate{frametitle}[default][center]
+
+
+\title{Практическое введение в метод опорных векторов}
+\author{Яковлев Дмитрий}
+
+\institute{Санкт-Петербургский Государственный Политехнический Университет Петра Великого\\
+    \vspace{0.7cm}
+    Научный руководитель:  к.н. Н.О. Кадырова\\
+    \vspace{0.7cm}
+}
+\date{Март 6, 2016}
+
+
+\begin{document}
+
+\maketitle
+
+% \begin{frame}
+% \frametitle{Оглавление}
+% \tableofcontents
+% \end{frame}
+
+\include{main}
+
+
+\end{document}
