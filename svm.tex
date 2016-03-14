@@ -247,6 +247,41 @@ SW не является допустимым строковым ядром:
 \end{itemize}
 \end{frame}
 
+\begin{frame}
+\frametitle{Эксперимент}
+\begin{columns}
+\column{0.5\textwidth}
+    Тестируемые методы:
+    \begin{itemize}
+        \item LA-eig
+        \item LA-ekm
+        \item Pairwise
+        \item Mismatch
+        \item Fisher
+    \end{itemize}
+
+\column{0.5\textwidth}
+    Параметры выравнивания:
+    \begin{itemize}
+        \item белки
+        \item BLOSUM62
+        \item открытие пробела -11
+        \item продолжение пробела -1
+    \end{itemize}
+\end{columns}
+\bigskip
+
+Задача классификации белковых доменов в суперсемейства:
+\begin{itemize}
+    \item 4352 белковых последовательности
+    \item 54 семейства
+    \item 10 положительных значений в обучающей выборке
+    \item 5 положительных значений в тестовой выборке
+    \item отрицательные получены
+        смешиванием последовательностей в пропорции
+\end{itemize}
+\end{frame}
+
 % \begin{frame}
 % \frametitle{Результаты эксперимента}
 % \end{frame}
