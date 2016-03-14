@@ -223,10 +223,30 @@ SW не является допустимым строковым ядром:
 \end{itemize}
 \end{frame}
 
-% \begin{frame}
-% \frametitle{Решение диагонального преобладания}
-% \end{frame}
-%
+\begin{frame}
+\frametitle{Решение диагонального преобладания}
+Нормализация, убирает диагональное преобладание с ростом $\beta$:
+\begin{equation*}
+    \widetilde{k}_{LA}^{\beta}(x, y)
+    = \frac{1}{\beta} \ln k_{LA}^{\beta}(x, y)
+\end{equation*}
+Приведение к положительной полуопределённости:
+\begin{itemize}
+    \item Вычитание из диагонали
+        наименьшего отрицательного собственного значения
+        матрицы Грамма (LA-eig).
+        \bigskip
+
+    \item Эмпирическая ядерная таблица (LA-ekm):
+    \begin{equation*}
+        (\widetilde{k}_{LA}^{\beta}(x, x_1), \dots,
+        \widetilde{k}_{LA}^{\beta}(x, x_n))
+    \end{equation*}
+    на обучающей выборке.
+
+\end{itemize}
+\end{frame}
+
 % \begin{frame}
 % \frametitle{Результаты эксперимента}
 % \end{frame}
