@@ -80,16 +80,32 @@
 \end{equation*}
 \end{frame}
 
-%
-% \begin{frame}
-% \frametitle{Локальное выравнивание последовательностей\\
-% Алгоритм Смита-Ватермана}
-% \end{frame}
-%
-% \begin{frame}
-% \frametitle{Подходит ли счёт SW в качестве ядра?}
-% \end{frame}
-%
+
+\begin{frame}
+\frametitle{Подходит ли SW в качестве ядра?}
+Напомим определение допустимого ядра:
+\begin{itemize}
+    \item симметрия:
+    \begin{equation*}
+        k(x, y) = k(y, x)
+    \end{equation*}
+
+    \item положительная полуопределённость:
+    \begin{equation*}
+        \forall n \in \mathbb{N},
+        \forall (x_1, \dots, x_n, \alpha_1, \dots, \alpha_n)
+            \in \chi^n \times \mathbb{R}^n:
+    \end{equation*}
+    \begin{equation*}
+        \sum^n_{i, j = 1} \alpha_i \alpha_j k(x_i, x_j) \geq 0
+    \end{equation*}
+\end{itemize}
+
+\textbf{Проблема:}
+
+SW симметрично,\\но не всегда положительно полуопределено.
+\end{frame}
+
 % \begin{frame}
 % \frametitle{Свёртка ядер}
 % \end{frame}
